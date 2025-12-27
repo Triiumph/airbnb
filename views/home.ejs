@@ -1,0 +1,37 @@
+<%- include('partials/start_head') %>
+<body class="bg-gray-100">
+
+  <%- include('partials/header') %>
+
+  <main class="p-4">
+    <h2 class="text-2xl font-bold mb-4 text-blue-600">
+      Here are your registered homes
+    </h2>
+
+    <% if (registeredHome && registeredHome.length > 0) { %>
+      <ul class="list-disc pl-5">
+      <% registeredHome.forEach(hm => { %>
+        <li class="mb-2 flex items-center justify-between">
+          <span class="font-semibold text-green-700">
+            <%= hm.houseName %>
+          </span>
+          <a href="/host/home/<%= hm.id %>"
+            class="bg-blue-500 text-white px-3 py-1 rounded text-sm hover:bg-blue-600 transition">
+            Details
+          </a>
+        </li>
+      <% }) %>
+      </ul>
+    <% } else { %>
+      <p class="text-gray-600">No homes added yet.</p>
+    <% } %>
+
+    <div class="mt-4">
+      <a href="/host/add-home"
+         class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition">
+        Add Home
+      </a>
+    </div>
+  </main>
+</body>
+</html>
